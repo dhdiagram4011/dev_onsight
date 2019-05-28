@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: error-logger
+  labels:
+    app: error-logger
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  selector:
+    matchLabels:
+      app: error-logger
+  template:
+    metadata:
+      labels:
+        app: error-logger
+    spec:
+      containers:
+        - image: gcr.io/elegant-weaver-209800/rockcube/dev/error-report:1.2
+          name: error-logger
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: Always
+          securityContext:
+            capabilities: {}
+            privileged: true

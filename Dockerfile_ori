@@ -1,0 +1,15 @@
+FROM alpine:latest
+MAINTAINER dohyoung.kim <dohyoung.kim@rockplace.co.kr>
+RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+RUN apk update
+RUN apk add python3
+RUN mkdir -p /opt/rockplace
+ADD ./rockcube-app-error-logger.py /opt/rockplace
+EXPOSE 5000
+ENTRYPOINT ["pyton3","-m","registry","-n","-c","error-logger","0.0.0.0:5000"]
+RUN python3 /opt/rockplace/rockcube-app-error-logger.py
+
+
+
+
+

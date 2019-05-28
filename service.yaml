@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: view
+  labels:
+    app: view
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: error
+  loadBalancerSourceRanges:
+  - 112.220.232.86/32
