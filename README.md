@@ -5,8 +5,10 @@
 200이 아닌경우에는 슬랙으로 알람을 발송해주는 내용을 코딩 후 Jenkins에 적용하여 새로운 소스코드 수정이 발생 후 배포시마다 
 체크하여 어플리케이션의 상태를 모니터링하는 코드들로 구성되어 있습니다.
 
+
 1. https://github.com/dhdiagram4011/dev_onsight/blob/master/pod-status-check-cpprod.py<br>
 운영 GKE kubernetes pod의 상태를 체크하기 위한 코드
+
 
 
 2. https://github.com/dhdiagram4011/dev_onsight/blob/master/pod-status-check.py<br>
@@ -14,9 +16,11 @@ kubernets 의 evited pod를 체크하기 위한 코드
 evicted pod가 발생하면 슬랙 팀 체널로 알람을 보내주는 코드
 
 
+
 3. https://github.com/dhdiagram4011/dev_onsight/blob/master/rockcube-app-error-logger.py<br>
 구글의 pub/sub 서비스를 이용하여 어플리케이션의 로그를 게더링 하기 위한 파이선 코드
 수집된 에러 로그들을 슬랙의 팀 채널로 보내주는 코드
+
 
 
 4. https://github.com/dhdiagram4011/dev_onsight/blob/master/rockcube_GET.py<br>
